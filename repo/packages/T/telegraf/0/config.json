@@ -31,7 +31,7 @@
     "config": {
       "url": "https://raw.githubusercontent.com/anantasty/influxdata-docker/master/telegraf/1.1/telegraf.conf",
       "influx_database": "telegraf",
-      "mysql_conn": "root:scalearc@tcp(mysql:3306)",
+      "mysql_conn": "root:scalearc@tcp(mysql:3306)"
     },
 		"networking": {
 			"type": "object",
