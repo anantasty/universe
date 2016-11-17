@@ -42,7 +42,7 @@
         },
         "influx_database": {
           "description": "name of influx database to store metrics in",
-          "default": "telegraf",
+          "default": "telegraf"
         },
         "mysql_conn": {
           "description": "mysql connection string",
