@@ -46,7 +46,7 @@
         },
         "mysql_conn": {
           "description": "mysql connection string",
-          "default": "root:root@tcp(mysql.marathon.l4lb.thisdcos.directory:3306)"
+          "default": "root:root@tcp(mysql.marathon.l4lb.thisdcos.directory:3306)/"
         }
       }
     },
