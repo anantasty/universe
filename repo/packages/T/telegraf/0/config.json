@@ -48,6 +48,7 @@
           "description": "mysql connection string",
           "default": "root:scalearc@tcp(mysql:3306)"
         }
+      }
     },
 		"networking": {
 			"type": "object",
