@@ -3,7 +3,7 @@
   "cpus": {{service.cpus}},
   "mem": {{service.mem}},
   "instances": 1,
-  "env":
+"env": {
   {{#config.url}}
     "INFLUX_URL": "{{config.url}}",
   {{/config.url}}
