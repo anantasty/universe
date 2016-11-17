@@ -63,6 +63,10 @@ def main():
     dcos_versions = ["1.6.1", "1.7", "1.8", "1.9", "1.10"]
     [render_universe_by_version(
         args.outdir, packages, version) for version in dcos_versions]
+    index = create_index(packages)
+    print("INDEX:{}".format(index))
+    with (args.outdir / 'index.json').open('w') as index_file:
+        json.dump(index, index_file)
 
 
 def render_universe_by_version(outdir, packages, version):
@@ -318,6 +322,7 @@ def enumerate_dcos_packages(packages_path):
     """
 
     for letter_path in packages_path.iterdir():
+        print(letter_path)
         assert len(letter_path.name) == 1 and letter_path.name.isupper()
         for package_path in letter_path.iterdir():
             for release_version in package_path.iterdir():
