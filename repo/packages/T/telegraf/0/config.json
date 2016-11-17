@@ -29,9 +29,25 @@
 			]
     },
     "config": {
-      "url": "https://raw.githubusercontent.com/anantasty/influxdata-docker/master/telegraf/1.1/telegraf.conf",
-      "influx_database": "telegraf",
-      "mysql_conn": "root:scalearc@tcp(mysql:3306)"
+      "type": "object",
+      "description": "telegraf networking configuration properties",
+      "properties": {
+        "url": {
+          "description": "Influx master url",
+          "default": ""
+        },
+        "config_url": {
+          "description": "URL to config file to be loaded in telegraf",
+          "default": "https://raw.githubusercontent.com/anantasty/influxdata-docker/master/telegraf/1.1/telegraf.conf"
+        },
+        "influx_database": {
+          "description": "name of influx database to store metrics in",
+          "default": "telegraf",
+        },
+        "mysql_conn": {
+          "description": "mysql connection string",
+          "default": "root:scalearc@tcp(mysql:3306)"
+        }
     },
 		"networking": {
 			"type": "object",
