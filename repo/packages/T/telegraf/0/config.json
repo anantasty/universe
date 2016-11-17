@@ -34,7 +34,7 @@
       "properties": {
         "url": {
           "description": "Influx master url",
-          "default": ""
+          "default": "influxdb.marathon.l4lb.thisdcos.directory:8086"
         },
         "config_url": {
           "description": "URL to config file to be loaded in telegraf",
