@@ -64,7 +64,6 @@ def main():
     [render_universe_by_version(
         args.outdir, packages, version) for version in dcos_versions]
     index = create_index(packages)
-    print("INDEX:{}".format(index))
     with (args.outdir / 'index.json').open('w') as index_file:
         json.dump(index, index_file)
 
