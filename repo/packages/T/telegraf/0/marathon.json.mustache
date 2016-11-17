@@ -1,0 +1,70 @@
+{
+  "id": "{{service.name}}",
+  "cpus": {{service.cpus}},
+  "mem": {{service.mem}},
+  "instances": 1,
+  "env":
+  {{#config.url}}
+    "INFLUX_URL": "{{config.url}}",
+  {{/config.url}}
+  {{#config.influx_database}}
+      "INFLUX_DATABASE": "{{config.influx_database}}",
+  {{/config.influx_database}}
+  {{#config.mysql_conn}}
+    "INFLUX_MYSQL_CONN": "{{config.mysql_conn}}"
+  {{/config.mysql_conn}}
+  },
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "{{resource.assets.container.docker.telegraf-docker}}",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+        "containerPort": 8092,
+        "hostPort": 0,
+        {{#networking.external_access.enable}}
+        "servicePort": {{networking.external_access.external_access_port}},
+        {{/networking.external_access.enable}}
+        "protocol": "tcp",
+        "name": "telegraf-udp",
+        "labels": {
+          "VIP_0": "/{{service.name}}:{{networking.port_udp}}"
+          }
+        },
+        {
+        "containerPort": 8094,
+        "hostPort": 0,
+        "protocol": "tcp",
+        "name": "telegraf-tcp",
+        "labels": {
+          "VIP_0": "/{{service.name}}:{{networking.port_tcp}}"
+          }
+        },
+        {
+        "containerPort": 8125,
+        "hostPort": 0,
+        "protocol": "tcp",
+        "name": "influxdb-api",
+        "labels": {
+        "VIP_0": "/{{service.name}}:{{networking.port_statsd}}"
+        }
+        }
+      ],
+      "forcePullImage": false
+    }
+  },
+  "labels": {
+    "DCOS_PACKAGE_VERSION": "0.13-0.1",
+    "DCOS_SERVICE_NAME": "{{service.name}}",
+    "MARATHON_SINGLE_INSTANCE_APP": "true",
+    {{#networking.external_access.enable}}
+    "HAPROXY_GROUP": "external",
+    {{/networking.external_access.enable}}
+    "DCOS_PACKAGE_IS_FRAMEWORK": "false"
+  },
+  "upgradeStrategy":{
+    "minimumHealthCapacity": 0,
+    "maximumOverCapacity": 0
+  }
+}
