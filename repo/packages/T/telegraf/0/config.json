@@ -42,11 +42,11 @@
 					"type": "number",
           "default": 8092
 				},
-          "port_tcp": {
+        "port_tcp": {
           "description": "Port number to be used for tcp listener.",
 					"type": "number",
           "default": 8094
-          },
+        },
         "port_statsd": {
           "description": "Port number to be used for statsd server.",
           "type": "number",
@@ -55,20 +55,20 @@
 				"external_access": {
 					"type": "object",
 					"description": "Enable access from outside the cluster through Marathon-LB.\nNOTE: this connection is unencrypted.",
-            "properties": {
-							"enable": {
-								"description": "Enable or disable creating a VIP for external access through a public node running Marathon-LB.",
+          "properties": {
+            "enable": {
+              "description": "Enable or disable creating a VIP for external access through a public node running Marathon-LB.",
 								"type": "boolean",
-                "default": false
-							},
-							"external_access_port": {
-								"description": "For external access, port number to be used for clear communication in the external Marathon-LB load balancer",
-								"type": "number",
-								"default": 18083
-							}
-						}
-					}
-			}      
+              "default": false
+            },
+            "external_access_port": {
+              "description": "For external access, port number to be used for clear communication in the external Marathon-LB load balancer",
+              "type": "number",
+              "default": 18083
+            }
+          }
+        }
+      }
 		}
 	}
 }
