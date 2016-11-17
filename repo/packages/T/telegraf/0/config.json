@@ -46,7 +46,7 @@
         },
         "mysql_conn": {
           "description": "mysql connection string",
-          "default": "root:scalearc@tcp(mysql:3306)"
+          "default": "admin:password@tcp(mysql.marathon.l4lb.thisdcos.directory:3306)"
         }
       }
     },
